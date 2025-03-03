@@ -1,0 +1,2229 @@
+  ✔ should
+  Config-1 (license, oracle, fs)
+    ✔ CON-1-1, service.processing.storage.fs?logRequest=false
+    ✔ CON-1-2, service.processing.storage.fs
+    ✔ CON-1-3, service.sessionApi.transactions.location.folder
+    ✔ CON-1-4, DeleteByTag.folder
+    ✔ CON-1-5, service.webServer.logging - DEBUG
+    ✔ CON-1-6, sdk.rfid.paSensitiveCodes - 1879047913 (rfidBody)
+    ✔ CON-1-6, sdk.rfid.paSensitiveCodes - 1879047913 (fullBody)
+
+  Config-2 (license, mysql, minio)
+    ✔ CON-2-1, service.processing.storage.s3?logRequest=false - Minio
+    ✔ CON-2-2, service.processing.storage.s3 - Minio
+    ✔ CON-2-2-2, service.processing.audit.false
+    ✔ CON-2-3, service.sessionApi.transactions.location.s3 - Minio
+    ✔ CON-2-4, DeleteByTag.s3 - Minio
+    ✔ CON-2-5, service.webServer.logging - ERROR
+    ✔ CON-2-6, sdk.rfid.paSensitiveCodes - NO 1879047913 (rfidBody)
+    ✔ CON-2-6, sdk.rfid.paSensitiveCodes - NO 1879047913 (fullBody)
+
+  Config-3 (license, mariadb, s3)
+    ✔ CON-3-1, service.processing.storage.s3?logRequest=false - AWS
+    ✔ CON-3-2, service.processing.storage.s3 - AWS
+    ✔ CON-3-3, service.sessionApi.transactions.location.s3 - AWS
+    ✔ CON-3-4, DeleteByTag.s3 - AWS
+    ✔ CON-3-5, service.webServer.logging - INFO
+    ✔ CON-3-6, sdk.rfid.rfidPkdPaPath - NO masterlists (rfidBody)
+    ✔ CON-3-6, sdk.rfid.rfidPkdPaPath - NO masterlists (fullBody)
+
+  Config-4 (license, sqlite, gcs)
+    ✔ CON-4-1, service.processing.storage.gcs?logRequest=false
+    ✔ CON-4-2, service.processing.storage.gcs
+    ✔ CON-4-3, service.sessionApi.transactions.location.gcs
+    ✔ CON-4-4, DeleteByTag.gcs
+    ✔ CON-4-5, sdk.rfid.rfidPkdPaPath - masterlists are set (rfidBody)
+    ✔ CON-4-5, sdk.rfid.rfidPkdPaPath - masterlists are set (fullBody)
+    ✔ TC-, Digital Travel Credential (virtual component)
+    ✔ TC-, Test clients previous releases
+
+  Config-5 (license, mssql, az)
+    ✔ CON-5-1, service.processing.storage.az?logRequest=false
+    ✔ CON-5-2, service.processing.storage.az
+    ✔ CON-5-2-2, service.processing.audit.true
+    ✔ CON-5-3, service.sessionApi.transactions.location.az
+    ✔ CON-5-4, DeleteByTag
+    ✔ CON-5-5, service.webServer.demoApp.enabled - FALSE
+    ✔ CON-5-6, sdk.rfid.chipVerification.enabled - FALSE
+    ✔ CON-5-7, returnSystemInfo.true (process)
+    ✔ CON-5-8, returnSystemInfo.true (ping)
+
+  Config-6 (license, postgresql, az)
+    ✔ CON-6-1, service.processing.saveResult.false
+    ✔ CON-6-1-2, service.processing.audit.true
+    ✔ CON-6-2, service.sessionApi.transactions.location.az
+    ✔ CON-6-3, service.sessionApi.transactions.location.az
+    ✔ CON-6-4, DeleteByTag
+    ✔ CON-6-5, returnSystemInfo.false (process)
+    ✔ CON-6-6, returnSystemInfo.false (ping)
+    ✔ CON-6-7, Check rfid backend side verification (positive)
+    ✔ CON-6-8, Check rfid backend side verification (negative)
+    ✔ CON-6-8, Update rfid keys for same transaction
+
+  Housekeeper @oracle @fs
+    ✔ HK-1, Check transactions auto remove
+    ✔ HK-2, transaction ttl
+    ✔ HK-3, dtask, lock tables auto removing
+
+  MongoDb
+    - APIv2-1, dBlock check
+
+  Api v2 @API-2
+    ✔ APIv2-1, No private key
+    ✔ APIv2-2, Custom tag
+    ✔ APIv2-3, Custom metadata (dictionary)
+    ✔ APIv2-4, Custom metadata (string)
+    ✔ APIv2-5, Wrong transaction ID
+    ✔ APIv2-6, No public key
+    ✔ APIv2-7, Corrupt body
+    - APIv2-10-1, Hologram (old package)
+    ✔ APIv2-10-2, Hologram (new package)
+    ✔ APIv2-11, Different scenario
+    ✔ APIv2-12, - bad license
+    ✔ APIv2-13, Get files
+    ✔ TC-, Full params request - API2 - positive
+    ✔ APIv2-, Tag forbidden characters
+    ✔ APIv2-, Tag length validation
+    ✔ APIv2-17, Check status transaction at every step
+    ✔ APIv2-18, Get list transaction if tag not exist (negative case)
+    ✔ APIv2-19, Check all keys in response
+    ✔ APIv2-20, Get list transaction if transaction removed
+    ✔ APIv2-21, Get list 10 transaction
+    ✔ APIv2-22-0, extPortrait apiV2
+    ✔ APIv2-22-1, livePortrait apiV2
+    ✔ TC-42740, Check licensing service tag limit useCache=false (no limit if same inputHash)
+    ✔ TC-42741, quick reprocess (useCache=true)
+    ✔ APIv2-25, quick reprocess (default useCache=false)
+    ✔ APIv2-26, only rfid session in request package
+    ✔ TC-42739, Check license transaction request with rfid
+    ✔ APIv2-27, check response link before and after reprocess
+    ✔ TC-45032, Liveness: 3 ovi elements after reprocess
+    ✔ APIv2-29, Generate DTC VC and reprocess it
+    ✔ APIv2-30, face comparison livePortrait positive (apiV2)
+    ✔ APIv2-30, face comparison livePortrait negative (apiV2)
+    ✔ APIv2-30, face comparison extPortrait positive (apiV2)
+    ✔ APIv2-30, face comparison extPortrait negative (apiV2)
+    ✔ APIv2-31, reprocess bson
+    ✔ APIv2-32, check xml results
+    ✔ APIv2-33, SHA256 - sig is correct
+    ✔ APIv2-34, SHA256 - sig dont match
+    ✔ APIv2-35, SHA256 - broken package
+
+  Authenticity checks @SMOKE @API-1
+    ✔ DAuth-1, Invisible Personal Information (IPI) visualization
+    ✔ DAuth-2, electronic device border check
+    ✔ DAuth-3, electronic device
+    ✔ DAuth-4, portrait comparison
+    ✔ , Black and white copy check (true)
+    ✔ , Black and white copy check (false)
+    ✔ , Black and white copy check (undefined)
+    ✔ , Security text (true)
+    ✔ , Security text (false)
+    ✔ , Security text (undefined)
+
+  Common test @API-2
+    ✔ Com-1, service api
+    ✔ Com-2, process v1
+    ✔ Com-3, process v2
+    ✔ Com-4, healthz
+    ✔ Com-5, readyz
+
+  db.json-check
+    ✔ /db.json check https://api.regulaforensics.com/
+    ✔ /db.json check https://nightly-api.regulaforensics.com/
+
+  Deep response
+    ✔ api-1 @API-1
+    ✔ api-2 @API-2
+    ✔ api-1 @API-1 "Or" scenarios
+
+  Image rotation @API-1
+    ✔ TC-, Different angles
+    ✔ TC-, Different angles cut borders
+    ✔ TC-, Different angles cut borders (double page)
+    ✔ TC-, Different angles perspective (passport)
+    ✔ TC-, Different angles perspective (id)
+    ✔ TC-, Different angles perspective (two images)
+
+  Input data @SMOKE @API-1
+    ✔ TC-17568, Double page spread (true)
+    ✔ TC-17569, Double page spread (false)
+    ✔ TC-17571, Already cropped (true) not cropped document
+    ✔ TC-17573, Already cropped (true) cropped document
+    ✔ TC-17572, Already cropped (false)
+    ✔ TC-17575, Multi doc on image (Locate scenario only)
+    ✔ TC-, Full params request - positive
+    ✔ TC-, Full params request - tag
+    - TC-42281, Two images, second one is not document
+    - TC-42283, Multi doc on image (doctype error)
+
+  Input image quality @SMOKE @API-1
+    ✔ TC-17578, Focus check (true) document is focus
+    ✔ TC-17579, Focus check (true) document is not focus
+    ✔ TC-17580, Focus check (false) document is not focus
+    ✔ TC-17582, Glares check (true) document without glare
+    ✔ TC-17583, Glares check (true) document with glare
+    ✔ TC-17584, Glares check (false) document with glare
+    ✔ TC-17586, Dpi threshold (passed)
+    ✔ TC-17587, Dpi threshold (failed)
+    ✔ TC-17589, Angle threshold (passed)
+    ✔ TC-17590, Angle threshold (failed)
+    ✔ TC-17592, Colorness check (true) document is color
+    ✔ TC-17593, Colorness check (true) document is black and white
+    ✔ TC-17594, Colorness check (false) document is black and white
+    ✔ TC-17598, Moire check (true) document with moire
+    ✔ TC-17596, Moire check (true) document without moire
+    ✔ TC-17597, Moire check (false) document with moire
+    ✔ TC-17600, Document position indent (passed)
+    ✔ TC-17601, Document position indent (failed)
+    ✔ TC-18236, Affect the overall status (false)
+    ✔ TC-18237, Affect the overall status (true)
+
+  license
+    /Trial Extended (created in OM)/OL109023/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109037.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109036.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109035.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109034.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109033.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109032.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109031.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109030.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109029.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109028.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /SL/SL109027.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL109016 Instance SDK Service Full + Face Full/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL109015 Instance SDK Service OCR + Face Full/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL109014 Instance SDK Service Basic/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL109013 Instance SDK Service Barcode/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL109012 Transact SDK Service OCR + Face Full/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL109011 Transact SDK Service Basic/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL109010 Transact SDK Service Barcode/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108994 Instance SDK Service MRZ (active) + Face Processing Service Full (deactivated)/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108993 Instance SDK Service Full (active) + SDK Server-side RFID Module (active) + Face Processing Service Full (expired)/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108992 Instance SDK Service Full (expired) + Face Processing Service Quality (active)/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108991 Instance SDK Service Full (deactivated) + Face Processing Service Match (active)/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108990 Transact SDK Service MRZ (active) + Face Processing Service Full (deactivated) /regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108989 Transact SDK Service Full (active) + SDK Server-side RFID Module (active) + Face Processing Service Full (expired) /regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108988 Transact SDK Service Full (expired) + Face Processing Service Quality (active)  /regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /OL108987 Transact SDK Service Full (deactivated) + Face Processing Service Match (active)/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /Develop/OL109017/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+    /CommittedSession/regula.license
+      Mrz
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Barcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Locate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      Ocr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      DocType
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcode
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      MrzOrBarcodeOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      LocateVisual_And_MrzOrOcr
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullProcess
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      FullAuth
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      RusStamp
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      OcrFree
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+      BarcodeAndLocate
+        ✔ Australia-ePassport(2022) @API-1
+        ✔ Austria - Id Card (2021) RFID @API-1
+        ✔ idCardRfid_full @API-2
+
+  Logging @API-1
+    ✔ TC-17665, Log level - info
+    ✔ TC-17665, Check log
+
+  Negative tests
+    ✔ NT-, Wrong urls
+    ✔ NT-, No image return urls
+    ✔ NT-, Bad input data
+    ✔ NT-, Tag forbidden characters
+    ✔ NT-, Tag length validation
+    ✔ NT-, Full params request - no doc
+    ✔ NT-, Full params request - permission denied. Bad license. RejectReason: 'unknown'
+    ✔ NT-, Full params request - permission denied. Bad license. RejectReason: 'ONLINE_LICENSE_SCENARIO_NOT_ALLOWED'
+    ✔ NT-, Full params request - permission denied. Bad license. RejectReason: 'ONLINE_LICENSE_INACTIVE'
+    ✔ NT-, Check licensing service limit (16 request in one tag)
+
+  Output data @SMOKE @API-1
+    ✔ TC-17603, Result type output - RawImageContainer
+    ✔ TC-17604, Result type output - ImageQualityCheckList
+    ✔ TC-17605, Result type output - Status
+    ✔ TC-17606, Result type output - Text
+    ✔ TC-17607, Result type output - Images
+    ✔ TC-17608, Result type output - DocVisualExtendedInfo
+    ✔ TC-17609, Result type output - DocVisualExtendedInfo
+    ✔ TC-17610, Result type output - DocVisualExtendedInfo
+    ✔ TC-17611, Result type output - ListVerifiedFields
+    ✔ TC-17612, Result type output - DocGraphicsInfo
+    ✔ TC-17613, Result type output - OneCandidate
+    ✔ TC-17614, Result type output - AuthenticityCheckList
+    ✔ TC-17615, Result type output - DocumentPosition
+    ✔ TC-17616, Result type output - DocBarCodeInfo
+    ✔ TC-17617, Result type output - some value
+    ✔ TC-17619, Shift expired date
+    ✔ TC-17621, Minimal holder age
+    ✔ TC-17623, Date format(dd-mm-yyyy)
+    ✔ TC-17624, Date format(yy/mm/dd)
+    ✔ TC-17626, Convert case - No change
+    ✔ TC-17627, Convert case - Upper case
+    ✔ TC-17628, Convert case - Lover case
+    ✔ TC-17629, Convert case - Capital
+    ✔ TC-17631, Measure system - Metric
+    ✔ TC-17632, Measure system - Imperial
+    ✔ TC-17634, Maximum image dpi (out)
+    ✔ TC-17636, Return cropped barcode (true)
+    ✔ TC-17637, Return cropped barcode (false)
+    ✔ TC-17642, Return uncropped image (true)
+    ✔ TC-17643, Return uncropped image (false)
+    ✔ TC-17617, Image Output Max Height
+    ✔ TC-17617, Image Output Max Width
+    ✔ TC-49447, doBarcodes
+
+  Process @SMOKE @API-1
+    ✔ TC-17645, MRZ formats - IDL
+    ✔ TC-17646, MRZ formats - ID1
+    ✔ TC-17647, MRZ formats - ID2
+    ✔ TC-17648, MRZ formats - ID3
+    ✔ TC-17651, No graphic (true)
+    ✔ TC-17652, No graphic (false)
+    ✔ TC-17654, Force document type
+    ✔ TC-17656, Check required text field (true)
+    ✔ TC-17657, Check required text field (false)
+    ✔ TC-17651, Field Types Filter
+    ✔ TC-17651, Match Text Field Mask (true)
+    ✔ TC-17651, Match Text Field Mask (false)
+    ✔ TC-33248, mrzDetectMode = sample/process/mrzDetectMode-1.2.jpg
+    ✔ TC-33248, mrzDetectMode = sample/process/mrzDetectMode-1.2-new.jpg
+    ✔ , Barcode blr id card (fullProcess)
+    ✔ , Barcode blr id card (fullAuth)
+    ✔ TC-42736, DocBarcodeInfo
+    ✔ , split Surname and Given name (HUNGARIAN Id card)
+    ✔ , split only latin Surname and Given name (Jordan - Passport)
+    ✔ , Personal number for Tajikistan ePassport
+    ✔ , generateNumericCodes (true)
+    ✔ , generateNumericCodes (false)
+    ✔ , generateNumericCodes (undefined)
+    ✔ , disablePerforationOCR (true)
+    ✔ , disablePerforationOCR (false)
+    ✔ , disablePerforationOCR (undefined)
+    ✔ , selectLongestNames (true)
+    ✔ , selectLongestNames (false)
+    ✔ , selectLongestNames (undefined)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 1)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 2)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 3)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 4)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 5)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 6)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 7)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 8)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 9)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 10)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 11)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 12)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 13)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 14)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 15)
+    ✔ Redmine-35091, strictDLCategoryExpiry (case - 16)
+
+  Quick reprocess @API-2
+    ✔ QR-1, quick reprocess check response time
+    ✔ 'QR-2, check containers, scenario: Mrz, key: keysTest
+    ✔ 'QR-3, check containers, scenario: Barcode, key: keysTest
+    ✔ 'QR-4, check containers, scenario: Locate, key: keysTest
+    ✔ 'QR-5, check containers, scenario: Ocr, key: keysTest
+    ✔ 'QR-6, check containers, scenario: DocType, key: keysTest
+    ✔ 'QR-7, check containers, scenario: MrzOrBarcode, key: keysTest
+    ✔ 'QR-8, check containers, scenario: MrzOrLocate, key: keysTest
+    ✔ 'QR-9, check containers, scenario: MrzAndLocate, key: keysTest
+    ✔ 'QR-10, check containers, scenario: MrzOrOcr, key: keysTest
+    ✔ 'QR-11, check containers, scenario: MrzOrBarcodeOrOcr, key: keysTest
+    ✔ 'QR-12, check containers, scenario: LocateVisual_And_MrzOrOcr, key: keysTest
+    ✔ 'QR-13, check containers, scenario: CreditCard, key: keysTest
+    ✔ 'QR-14, check containers, scenario: FullProcess, key: keysTest
+    ✔ 'QR-15, check containers, scenario: Id3Rus, key: keysTest
+    ✔ 'QR-16, check containers, scenario: FullAuth, key: keysTest
+    ✔ 'QR-17, check containers, scenario: RusStamp, key: keysTest
+    ✔ 'QR-18, check containers, scenario: OcrFree, key: keysTest
+    ✔ 'QR-19, check containers, scenario: BarcodeAndLocate, key: keysTest
+    ✔ 'QR-21, check containers, scenario: FullProcess, key: idCardRfid_full
+    ✔ 'QR-22, check containers, scenario: FullProcess, key: idCardNoRfid_Full
+    ✔ 'QR-23, check containers, scenario: FullAuth, key: passport_fullAuth_hologram
+    ✔ 'QR-24, check containers, scenario: Mrz, key: onlyRfidInPackage
+    ✔ 'QR-25, check containers, scenario: Barcode, key: onlyRfidInPackage
+    ✔ 'QR-26, check containers, scenario: Locate, key: onlyRfidInPackage
+    ✔ 'QR-27, check containers, scenario: Ocr, key: onlyRfidInPackage
+    ✔ 'QR-28, check containers, scenario: DocType, key: onlyRfidInPackage
+    ✔ 'QR-29, check containers, scenario: MrzOrBarcode, key: onlyRfidInPackage
+    ✔ 'QR-30, check containers, scenario: MrzOrLocate, key: onlyRfidInPackage
+    ✔ 'QR-31, check containers, scenario: MrzAndLocate, key: onlyRfidInPackage
+    ✔ 'QR-32, check containers, scenario: MrzOrOcr, key: onlyRfidInPackage
+    ✔ 'QR-33, check containers, scenario: MrzOrBarcodeOrOcr, key: onlyRfidInPackage
+    ✔ 'QR-34, check containers, scenario: LocateVisual_And_MrzOrOcr, key: onlyRfidInPackage
+    ✔ 'QR-35, check containers, scenario: CreditCard, key: onlyRfidInPackage
+    ✔ 'QR-36, check containers, scenario: FullProcess, key: onlyRfidInPackage
+    ✔ 'QR-37, check containers, scenario: Id3Rus, key: onlyRfidInPackage
+    ✔ 'QR-38, check containers, scenario: FullAuth, key: onlyRfidInPackage
+    ✔ 'QR-39, check containers, scenario: RusStamp, key: onlyRfidInPackage
+    ✔ 'QR-40, check containers, scenario: OcrFree, key: onlyRfidInPackage
+    ✔ 'QR-41, check containers, scenario: BarcodeAndLocate, key: onlyRfidInPackage
+    ✔ 'QR-42, check containers, scenario: FullAuth, key: quickReprocess
+    ✔ 'QR-43, check containers, scenario: FullAuth, key: hologramNew
+    ✔ 'QR-44, check containers, scenario: FullAuth, key: idCardRfid_fullAuth
+
+  Use face service @API-1
+    ✔ One shot identification - positive scenario passport (face and document compare)
+    ✔ One shot identification - positive scenario (face and document don't compare)
+    ✔ One shot identification - image without document, but many faces
+    ✔ One shot identification - positive scenario driving license (face and document compare)
+    ✔ One shot identification - image without doc and faces
+    ✔ live portrait - image compare positive
+    ✔ live portrait - image compare negative
+    ✔ live portrait - live image have several faces
+    ✔ live portrait - live and doc image without faces
+    ✔ ext portrait - image compare positive
+    ✔ ext portrait - image compare negative
+    ✔ ext portrait - live image have several faces
+    ✔ ext portrait - live and doc image without faces
+    ✔ One shot identification - photo in barcode (negative)
+    ✔ One shot identification - photo in barcode (positive)
+    ✔ Check childAgeThreshold
+
