@@ -1,0 +1,33 @@
+services:
+  squash-tm-md:
+    image: mariadb:10.6
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+    volumes:
+      - "squasg-tm-db:/var/lib/mysql"
+
+  squash-tm:
+    image: squashtest/squash
+    depends_on:
+      - squash-tm-md
+    environment:
+      SQTM_DB_TYPE: mariadb
+      SQTM_DB_USERNAME: ${DB_USER}
+      SQTM_DB_PASSWORD: ${DB_PASSWORD}
+      SQTM_DB_NAME: ${DB_DATABASE}
+      SQUASH_REST-API_JWT_SECRET: YWY4YzNlYzg1YWExNzBkZDUzZWVkMDMyNWMwOTMwM2M0ODJlMWUwMTFjNGFmNzZlOWExNWQwM2QxOWM0NWY0NQ==
+    ports:
+      - 8090:8080/tcp
+    links:
+      - squash-tm-md:mariadb
+    volumes:
+      - squash-tm-logs:/opt/squash-tm/logs
+      # Uncomment bellow if you want to activate embedded plugins
+      #- your/path/start-plugins.cfg:/opt/squash-tm/conf/start-plugins.cfg
+
+volumes:
+  squash-tm-logs:
+  squasg-tm-db:
