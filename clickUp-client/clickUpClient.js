@@ -19,27 +19,33 @@ export default class ClickUpClient {
     }
     async get(url) {
 
-        return await this.client.get(url);
+        return this.client.get(url);
 
     }
     async getSpaceFolders(spaceId = this.spaceId) {
 
-        return await this.client.get(`/space/${spaceId}/folder`).catch((error) => console.log(error.message));
+        return this.client.get(`/space/${spaceId}/folder`).catch((error) => console.log(error));
 
     }
     async getList(listId) {
 
-        return await this.client.get(`/list/${listId}`).catch((error) => console.log(error.message));
+        return this.client.get(`/list/${listId}`).catch((error) => console.log(error));
 
     }
     async getListTasks(listId) {
 
-        return await this.client.get(`/list/${listId}/task`).catch((error) => console.log(error.message));
+        return this.client.get(`/list/${listId}/task`).catch((error) => console.log(error));
 
     }
     async getTask(taskId) {
 
-        return await this.client.get(`/task/${taskId}?include_subtasks=true&include_markdown_description=true`).catch((error) => console.log(error.message));
+        return this.client.get(`/task/${taskId}?include_subtasks=true&include_markdown_description=true`).catch((error) => console.log(error));
+
+    }
+
+    async getTaskComments(taskId) {
+
+        return this.client.get(`/task/${taskId}/comment`).catch((error) => console.log(error));
 
     }
 

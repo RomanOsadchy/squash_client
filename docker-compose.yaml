@@ -10,7 +10,7 @@ services:
       - "squasg-tm-db:/var/lib/mysql"
 
   squash-tm:
-    image: squashtest/squash
+    image: squashtest/squash:latest
     depends_on:
       - squash-tm-md
     environment:
